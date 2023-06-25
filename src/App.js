@@ -12,10 +12,12 @@ function App() {
  };
 
  // A function that prints the data state to the console log
-const insert_data = () => {
-
-  console.log(data);
-  
+ const insert_data = async (id) => {
+  const response = await fetch(
+    `https://graph.facebook.com/v17.0/${id}?fields=attachments{media_type,url},message&access_token=token`
+  );
+  const json = await response.json();
+  console.log(json);
 };
  
  useEffect(() => {
